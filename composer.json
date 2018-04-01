@@ -1,0 +1,22 @@
+{
+  "name": "meetmatt/havel-hakimi",
+  "description": "Library to determine if sequence is graphical",
+  "type": "library",
+  "license": "MIT",
+  "autoload-dev": {
+    "psr-4": {
+      "MeetMatt\\HavelHakimi\\Test\\": "tests/"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "MeetMatt\\HavelHakimi\\": "src/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*"
+  },
+  "require": {
+    "php": ">=7"
+  }
+}
