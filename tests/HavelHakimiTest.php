@@ -22,11 +22,28 @@ class HavelHakimiTest extends TestCase
      * @throws LogicException
      * @throws RecursionContextInvalidArgumentException
      */
-    public function testZeroSequenceIsGraphical(array $degrees)
+    public function testSequenceIsGraphical(array $degrees)
     {
         $havelHakimi = new HavelHakimi();
         $sequence = Sequence::fromDegrees($degrees);
         $this->assertTrue($havelHakimi->isGraphical($sequence));
+    }
+
+    /**
+     * @dataProvider notGraphicalSequenceDataProvider
+     *
+     * @param int[] $degrees
+     *
+     * @throws ExpectationFailedException
+     * @throws InvalidArgumentException
+     * @throws LogicException
+     * @throws RecursionContextInvalidArgumentException
+     */
+    public function testSequenceIsNotGraphical(array $degrees)
+    {
+        $havelHakimi = new HavelHakimi();
+        $sequence = Sequence::fromDegrees($degrees);
+        $this->assertFalse($havelHakimi->isGraphical($sequence));
     }
 
     /**
@@ -49,6 +66,21 @@ class HavelHakimiTest extends TestCase
             [[9, 7, 7, 7, 6, 5, 4, 3, 3, 2, 1]],
             [[8, 8, 7, 7, 6, 5, 5, 5, 4, 3, 3, 1]],
             [[8, 8, 8, 7, 7, 6, 6, 5, 5, 4, 4]],
+            [[8, 8, 8, 7, 7, 6, 6, 5, 5, 4, 4, 0]],
+            [[8, 8, 8, 7, 7, 6, 6, 5, 5, 4, 4, 0, 0]],
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function notGraphicalSequenceDataProvider()
+    {
+        return [
+            [[]],
+            [[1, 0]],
+            [[2, 1]],
+            [[3, 3, 3]],
         ];
     }
 }

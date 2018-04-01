@@ -30,7 +30,7 @@ final class HavelHakimi
          */
         list($head, $tail) = $sequence->head();
 
-        if (empty($tail)) {
+        if (empty($head) || empty($tail)) {
             // sequence has only one element
             return false;
         }
