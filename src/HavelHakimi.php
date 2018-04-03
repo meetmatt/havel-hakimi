@@ -15,9 +15,12 @@ final class HavelHakimi
      */
     public function isGraphical(Sequence $sequence): bool
     {
-        if (empty($sequence)) {
+        if (count($sequence) === 0) {
             // sequence has no elements
             return false;
+        }
+        if (count($sequence) === 1) {
+            return $sequence->head() === 0;
         }
 
         // sort sequence in decreasing order
@@ -29,11 +32,6 @@ final class HavelHakimi
          * @var Sequence $tail
          */
         list($head, $tail) = $sequence->head();
-
-        if (empty($head) || empty($tail)) {
-            // sequence has only one element
-            return false;
-        }
 
         // if head's degree is zero then it's depleted, thus return true
         if ($head->isDepleted()) {

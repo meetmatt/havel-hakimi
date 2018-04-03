@@ -3,12 +3,13 @@
 namespace MeetMatt\HavelHakimi;
 
 use ArrayIterator;
+use Countable;
 use InvalidArgumentException;
 use IteratorAggregate;
 use function array_shift;
 use function usort;
 
-final class Sequence implements IteratorAggregate
+final class Sequence implements IteratorAggregate, Countable
 {
     /**
      * @var Vertex[]
@@ -71,5 +72,13 @@ final class Sequence implements IteratorAggregate
     public function getIterator()
     {
         return new ArrayIterator($this->vertices);
+    }
+
+    /**
+     * @return int
+     */
+    public function count()
+    {
+        return count($this->vertices);
     }
 }
